@@ -7,7 +7,7 @@ function togglemode() {
     img.setAttribute("src", "./Assets/vanassustado.png")
     img.setAttribute("alt", "foto de um cara assustado")
   } else {
-    img.setAttribute("src", "./assets/vanfumando.png")
+    img.setAttribute("src", "./Assets/vanfumando.png")
     img.setAttribute(
       "alt",
       "foto de pessoa comum fumando um chongos fundo bege camisa preta"
