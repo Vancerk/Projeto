@@ -13,10 +13,4 @@ function togglemode() {
       "foto de pessoa comum fumando um chongos fundo bege camisa preta"
     )
   }
-
-  // pegar a tag img
-
-  // subistituir a imagem
-  // se tiver em light mode adiconar a imagem light
-  // se tiver sem light mode manter a imagem normal
 }
