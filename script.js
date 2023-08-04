@@ -4,10 +4,13 @@ function togglemode() {
 
   const img = document.querySelector("#profile img")
   if (html.classList.contains("light")) {
-    img.setAttribute("src", "./Assets/avatar1.png")
+    img.setAttribute("src", "./Assets/vanassustado.png")
     img.setAttribute("alt", "foto de um cara assustado")
   } else {
-    img.setAttribute("src", "./Assets/avatar1.png")
-    img.setAttribute("alt", "foto de pessoa comum fumando um chongos fundo bege camisa preta")
+    img.setAttribute("src", "./assets/vanfumando.png")
+    img.setAttribute(
+      "alt",
+      "foto de pessoa comum fumando um chongos fundo bege camisa preta"
+    )
   }
 }
