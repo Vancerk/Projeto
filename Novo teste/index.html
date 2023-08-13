@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+  }
+  body {
+    background: linear-gradient(to bottom, #c400b3, #000000);
+    color: #af87ff;
+    font-family: monospace;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .matrix-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .matrix-code {
+    font-size: 14px;
+    line-height: 2;
+    color: rgba(255, 0, 255, 0.473);
+    animation: codeAnimation 15s linear infinite;
+  }
+
+  @keyframes codeAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-1500px);
+    }
+  }
+
+  .matrix-ray {
+    position:absolute;
+    width: 5px;
+    height: 100%;
+    background: rgba(150, 161, 167, 0.2);
+    animation: rayAnimation 10s linear infinite;
+  }
+
+  @keyframes rayAnimation {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scaleY(0);
+      transform: scalex(0);
+    }
+    50% {
+      opacity: 4;
+      transform: scaleY(1);
+      transform: scalex(5);
+    }
+  }
+
+  .matrix-words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .matrix-words span {
+    font-size: 50px;
+    margin: 15px;
+  }
+
+  .input-section {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-field {
+    padding: 5px;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+
+  .input-button {
+    background-color: #000000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #b10000;
+    cursor: pointer;
+  }
+
+  /* Tela de Parabéns */
+  .congrats-container {
+    position: absolute;
+    position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #000000, #330066);
+    color: linear-gradient(to bottom, #000000, #330066);
+    font-family: monospace;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+
+  .congrats-text {
+    font-size: 120px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="matrix-container">
+    <div class="matrix-code">
+      0413 0413 0413 0413 0413 0413 0413 0413 0413 0413 0413 0413 0413 0413
+    </div>
+    <div class="matrix-words">
+      <span>O CAOS É INEVITAVEL</span>
+      <span>0413</span>
+    </div>
+    <div class="matrix-ray"></div>
+    <div class="matrix-ray" style="left: 10%"></div>
+    <div class="matrix-ray" style="left: 20%"></div>
+    <div class="matrix-ray" style="left: 30%"></div>
+    <div class="matrix-ray" style="left: 40%"></div>
+    <div class="matrix-ray" style="left: 50%"></div>
+    <div class="matrix-ray" style="left: 60%"></div>
+    <div class="matrix-ray" style="left: 70%"></div>
+    <div class="matrix-ray" style="left: 80%"></div>
+    <div class="matrix-ray" style="left: 90%"></div>
+    <div class="input-section">
+      <input id="userInput" class="input-field" type="text" placeholder="Insira o código">
+      <button class="input-button" onclick="checkText()">Verificar</button>
+    </div>
+    <div id="confirmation" style="display: none">
+      <img src="./SPOILER_image.png" alt="acertou" />
+    </div>
+    <div id="warning" style="display: none; color: rgb(255, 0, 0); font-size: 50px">
+      ERROR b82341ggh562
+    </div>
+    <div class="congrats-container" id="congratsContainer" style="display: none">
+      <div class="congrats-text">Parabéns, você passou no último teste!</div>
+    </div>
+    <div class="error-text" id="errorText" style="display: none; color: rgb(255, 0, 0); font-size: 30px">
+      Ta errado otário, tenta denovo!
+    </div>
+  </div>
+
+  <script>
+    function checkText() {
+      const userInput = document.getElementById("userInput").value
+      const correctText = "TextoCorreto" // Coloque o texto correto aqui
+
+      if (userInput === correctText) {
+        document.getElementById("confirmation").style.display = "block"
+        document.getElementById("warning").style.display = "none"
+        document.getElementById("congratsContainer").style.display = "block"
+        document.getElementById("errorText").style.display = "none"
+      } else {
+        document.getElementById("confirmation").style.display = "none"
+        document.getElementById("warning").style.display = "block"
+        document.getElementById("congratsContainer").style.display = "none"
+        document.getElementById("errorText").style.display = "block"
+      }
+    }
+  </script>
+</body>
+</html>
